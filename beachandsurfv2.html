@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>Surfers Paradise SLSC - Community & Safety Education</title>
+    <style>
+        :root {
+            /* 品牌色系 */
+            --primary-color: #e31837; /* SLSC Red */
+            --secondary-color: #f0c419; /* SLSC Yellow */
+            --text-main: #222222;     /* 深灰接近黑 */
+            --text-sub: #444444;      /* 次要文字 */
+            --bg-body: #f4f7f6;       /* 護眼淺灰背景 */
+            --bg-card: #ffffff;
+            --accent-blue: #0066cc;
+            --shadow-soft: 0 8px 30px rgba(0,0,0,0.06);
+            --shadow-card: 0 4px 12px rgba(0,0,0,0.04);
+            --radius-lg: 16px;
+        }
+
+        /* 基礎設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            font-size: 16px;
+            padding-bottom: 40px;
+        }
+
+        /* Hero Header */
+        .hero {
+            background: linear-gradient(135deg, #e31837 0%, #c41230 100%);
+            color: white;
+            padding: 50px 20px 70px;
+            text-align: center; /* 確保內容水平置中 */
+            position: relative;
+            box-shadow: 0 4px 20px rgba(227, 24, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Flexbox 輔助置中 */
+            justify-content: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--secondary-color);
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto; /* 確保段落本身置中 */
+            text-align: center; /* 確保段落內文字置中 */
+            line-height: 1.5;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            width: 92%;
+            margin: -30px auto 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 通用卡片 */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        /* 雙語區塊排版 */
+        .bilingual-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .bilingual-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            .en-col {
+                border-right: 1px solid #eee;
+                padding-right: 20px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .en-col {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 20px;
+                margin-bottom: 10px;
+            }
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 20px;
+            background: var(--secondary-color);
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        p {
+            margin-bottom: 1em;
+            color: var(--text-sub);
+            text-align: justify;
+        }
+
+        /* 列表樣式 */
+        ul {
+            padding-left: 20px;
+            color: var(--text-sub);
+            margin-top: 10px;
+        }
+        li { margin-bottom: 6px; }
+
+        /* 教育內容卡片區 */
+        .info-cards-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            padding: 25px;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            background: #fff5f6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            color: var(--primary-color);
+        }
+
+        .card-title-group h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .card-title-group span {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            display: block;
+            margin-top: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="hero">
+        <h1>Surfers Paradise SLSC</h1>
+        <!-- 已確保此處文字置中 -->
+        <p>Est. 1925 | Heart of Gold Coast Safety<br>黃金海岸海灘安全的守護者</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Intro Card -->
+        <section class="card">
+            <div class="bilingual-grid">
+                <div class="en-col">
+                    <h2>About the Club</h2>
+                    <p>Surfers Paradise Surf Life Saving Club (SLSC) is a community hub dedicated to beach safety. While famous for its patrols, the club offers excellent <strong>Community Education</strong> programs.</p>
+                    <p>You can learn vital ocean skills without ever getting wet.</p>
+                </div>
+                <div class="zh-col">
+                    <h2>關於俱樂部</h2>
+                    <p>衝浪者天堂救生俱樂部 (SLSC) 是一個致力於海灘安全的社區中心。除了著名的巡邏隊，俱樂部也提供優質的<strong>社區教育</strong>課程。</p>
+                    <p>您可以在完全不碰水的情況下，學習至關重要的海洋安全技能。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Title -->
+        <div style="margin: 30px 0 20px; text-align:center;">
+            <h2 style="justify-content: center; margin-bottom:5px;">Safety Education Highlights</h2>
+            <span style="color:#666; font-size:0.9rem;">安全教育亮點</span>
+        </div>
+
+        <!-- Info Cards Container -->
+        <div class="info-cards-container">
+
+            <!-- Card 1: Beach Safety Talks -->
+            <article class="info-card">
+                <div class="card-header">
+                    <div class="icon-box">📢</div>
+                    <div class="card-title-group">
+                        <h3>Beach Safety Talks</h3>
+                        <span>海灘安全講座</span>
+                    </div>
+                </div>
+                
+                <div class="bilingual-grid">
+                    <div class="en-col">
+                        <p>Overview: The core of community education. Perfect for those who want to understand the beach environment without swimming.</p>
+                        <ul>
+                            <li>Role of a lifesaver</li>
+                            <li>Sun safety (Slip, Slop, Slap)</li>
+                            <li>Hydration importance</li>
+                            <li>Emergency signals</li>
+                        </ul>
+                    </div>
+                    <div class="zh-col">
+                        <p>概述：社區教育的核心。非常適合想了解海灘環境但不想下水的人。</p>
+                        <ul>
+                            <li>救生員的角色</li>
+                            <li>防曬安全（穿衣、塗抹、戴帽）</li>
+                            <li>水分補充的重要性</li>
+                            <li>緊急求救信號</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2: Rip Currents -->
+            <article class="info-card">
+                <div class="card-header">
+                    <div class="icon-box">🌊</div>
+                    <div class="card-title-group">
+                        <h3>Rip Current Awareness</h3>
+                        <span>認識離岸流</span>
+                    </div>
+                </div>
+
+                <div class="bilingual-grid">
+                    <div class="en-col">
+                        <p><strong>The #1 Hazard:</strong> Rips are powerful currents moving away from shore.</p>
+                        <p><strong>How to spot a rip:</strong></p>
+                        <ul>
+                            <li>Deeper, dark-colored water</li>
+                            <li>Fewer breaking waves</li>
+                            <li>Rippled surface</li>
+                        </ul>
+                    </div>
+                    <div class="zh-col">
+                        <p><strong>頭號危險：</strong> 離岸流是一股強勁的水流，會將人帶離岸邊。</p>
+                        <p><strong>如何辨識：</strong></p>
+                        <ul>
+                            <li>顏色較深的水域</li>
+                            <li>浪花較少的地方</li>
+                            <li>海面呈現波紋狀</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3: Equipment -->
+            <article class="info-card">
+                <div class="card-header">
+                    <div class="icon-box">🚤</div>
+                    <div class="card-title-group">
+                        <h3>Rescue Equipment</h3>
+                        <span>救援裝備展示</span>
+                    </div>
+                </div>
+
+                <div class="bilingual-grid">
+                    <div class="en-col">
+                        <ul>
+                            <li><strong>Rescue Board:</strong> For fast paddling.</li>
+                            <li><strong>Rescue Tube:</strong> Yellow floatation device.</li>
+                            <li><strong>IRB:</strong> Inflatable rescue boat.</li>
+                        </ul>
+                    </div>
+                    <div class="zh-col">
+                        <ul>
+                            <li><strong>救援板：</strong> 用於快速划水救援。</li>
+                            <li><strong>救援浮標：</strong> 黃色浮力輔助裝置。</li>
+                            <li><strong>IRB：</strong> 充氣式救援艇。</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4: Flags -->
+            <article class="info-card">
+                <div class="card-header">
+                    <div class="icon-box">🚩</div>
+                    <div class="card-title-group">
+                        <h3>Flag System</h3>
+                        <span>旗幟系統</span>
+                    </div>
+                </div>
+
+                <div class="bilingual-grid">
+                    <div class="en-col">
+                        <p><strong>Red & Yellow:</strong> Safest place to swim.</p>
+                        <p><strong>Black & White:</strong> Surfboards only.</p>
+                        <p><strong>Red:</strong> Danger! Beach closed.</p>
+                    </div>
+                    <div class="zh-col">
+                        <p><strong>紅黃旗：</strong> 最安全的游泳區域。</p>
+                        <p><strong>黑白格紋旗：</strong> 衝浪板專用區。</p>
+                        <p><strong>紅旗：</strong> 危險！海灘關閉。</p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
